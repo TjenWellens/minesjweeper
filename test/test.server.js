@@ -12,13 +12,15 @@ describe('empty game', function () {
 });
 
 describe('game with bomb on {1,1}', function () {
+  var bombs = [{x: 1, y: 1}];
   it('(1,1) should return GAME OVER', function () {
-    var bombs = [{x: 1, y: 1}];
     expect(play(1, 1, bombs)).to.eql('GAME OVER');
   });
   it('(1,2) should return 1', function () {
-    var bombs = [{x: 1, y: 1}];
     expect(play(1, 2, bombs)).to.eql(1);
+  });
+  it('(2,1) should return 1', function () {
+    expect(play(2, 1, bombs)).to.eql(1);
   });
 });
 
