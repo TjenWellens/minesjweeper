@@ -70,5 +70,4 @@ function distance (c1, c2) {
   var dy = c1.y - c2.y;
   if (Math.abs(dx) == 1 || Math.abs(dy) == 1)
     return 1;
-  return 100;
 }
