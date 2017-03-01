@@ -42,14 +42,24 @@ describe('game with bomb on {1,1}, {1,2}', function () {
   it('(2,1) should return 2', function () {
     expect(play({x: 2, y: 1}, bombs)).to.eql(2);
   });
+  it('(1,3) should return 1', function () {
+    expect(play({x: 1, y: 3}, bombs)).to.eql(1);
+  });
 });
 
 function play (coord, bombs) {
   if (bombs.length === 0)
     return 0;
+  var counter = 0;
   for (var i in bombs) {
-    if (bombs[i].x === coord.x && bombs[i].y === coord.y)
+    var b = bombs[i];
+    if (b.x === coord.x && b.y === coord.y)
       return 'GAME OVER';
+
+    var dx = b.x - coord.x;
+    var dy = b.y - coord.y;
+    if (Math.abs(dx) == 1 || Math.abs(dy) == 1)
+      counter++;
   }
-  return bombs.length;
+  return counter;
 }
