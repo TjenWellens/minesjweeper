@@ -52,12 +52,12 @@ function play (coord, bombs) {
     return 0;
   var counter = 0;
   for (var i in bombs) {
-    var b = bombs[i];
-    if (b.x === coord.x && b.y === coord.y)
+    var bomb = bombs[i];
+    if (bomb.x === coord.x && bomb.y === coord.y)
       return 'GAME OVER';
 
-    var dx = b.x - coord.x;
-    var dy = b.y - coord.y;
+    var dx = bomb.x - coord.x;
+    var dy = bomb.y - coord.y;
     if (Math.abs(dx) == 1 || Math.abs(dy) == 1)
       counter++;
   }
