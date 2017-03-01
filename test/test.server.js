@@ -4,14 +4,22 @@ it('true should equal true', function () {
   expect(true).to.eql(true);
 });
 
-// bommen, cel 4-5 => # bommen in de buurt
-
 describe('empty game', function () {
   it('(1,1) should return 0', function () {
-    expect(play(1, 1)).to.eql(0);
+    var bombs = [];
+    expect(play(1, 1, bombs)).to.eql(0);
   });
 });
 
-function play (x, y) {
-  return 0;
+describe('full game', function () {
+  it('(1,1) should return GAME OVER', function () {
+    var bombs = [{x: 1, y: 1}];
+    expect(play(1, 1, bombs)).to.eql('GAME OVER');
+  });
+});
+
+function play (x, y, bombs) {
+  if (bombs.length === 0)
+    return 0;
+  return 'GAME OVER';
 }
