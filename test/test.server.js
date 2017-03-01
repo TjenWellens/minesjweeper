@@ -53,7 +53,7 @@ function play (coord, bombs) {
   var counter = 0;
   for (var i in bombs) {
     var bomb = bombs[i];
-    if (bomb.x === coord.x && bomb.y === coord.y)
+    if (distance(bomb, coord) === 0)
       return 'GAME OVER';
 
     var dx = bomb.x - coord.x;
@@ -62,4 +62,10 @@ function play (coord, bombs) {
       counter++;
   }
   return counter;
+}
+
+function distance (c1, c2) {
+  if (c1.x === c2.x && c1.y === c2.y)
+    return 0;
+  return 1;
 }
