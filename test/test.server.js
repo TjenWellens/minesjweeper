@@ -39,6 +39,9 @@ describe('game with bomb on {1,1}, {1,2}', function () {
   it('(1,2) should return GAME OVER', function () {
     expect(play({x: 1, y: 2}, bombs)).to.eql('GAME OVER');
   });
+  it('(2,1) should return 2', function () {
+    expect(play({x: 2, y: 1}, bombs)).to.eql(2);
+  });
 });
 
 function play (coord, bombs) {
@@ -48,5 +51,5 @@ function play (coord, bombs) {
     if (bombs[i].x === coord.x && bombs[i].y === coord.y)
       return 'GAME OVER';
   }
-  return 1;
+  return bombs.length;
 }
