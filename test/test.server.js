@@ -56,9 +56,7 @@ function play (coord, bombs) {
     if (distance(bomb, coord) === 0)
       return 'GAME OVER';
 
-    var dx = bomb.x - coord.x;
-    var dy = bomb.y - coord.y;
-    if (Math.abs(dx) == 1 || Math.abs(dy) == 1)
+    if (distance(bomb, coord) === 1)
       counter++;
   }
   return counter;
@@ -67,5 +65,10 @@ function play (coord, bombs) {
 function distance (c1, c2) {
   if (c1.x === c2.x && c1.y === c2.y)
     return 0;
-  return 1;
+
+  var dx = c1.x - c2.x;
+  var dy = c1.y - c2.y;
+  if (Math.abs(dx) == 1 || Math.abs(dy) == 1)
+    return 1;
+  return 100;
 }
