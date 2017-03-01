@@ -47,6 +47,14 @@ describe('game with bomb on {1,1}, {1,2}', function () {
   });
 });
 
+it('distance should work', function () {
+  expect(distance({x: 1, y: 1}, {x: 1, y: 1})).to.eql(0);
+  expect(distance({x: 1, y: 1}, {x: 2, y: 1})).to.eql(1);
+  expect(distance({x: 1, y: 1}, {x: 1, y: 2})).to.eql(1);
+  expect(distance({x: 1, y: 1}, {x: 2, y: 2})).to.eql(1);
+  expect(distance({x: 1, y: 1}, {x: 1, y: 3})).to.eql(2);
+});
+
 function play (coord, bombs) {
   if (bombs.length === 0)
     return 0;
@@ -68,6 +76,5 @@ function distance (c1, c2) {
 
   var dx = c1.x - c2.x;
   var dy = c1.y - c2.y;
-  if (Math.abs(dx) == 1 || Math.abs(dy) == 1)
-    return 1;
+  return Math.max(Math.abs(dx), Math.abs(dy));
 }
