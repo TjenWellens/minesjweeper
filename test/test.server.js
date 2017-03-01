@@ -11,15 +11,21 @@ describe('empty game', function () {
   });
 });
 
-describe('full game', function () {
+describe('game with bomb on {1,1}', function () {
   it('(1,1) should return GAME OVER', function () {
     var bombs = [{x: 1, y: 1}];
     expect(play(1, 1, bombs)).to.eql('GAME OVER');
+  });
+  it('(1,2) should return 1', function () {
+    var bombs = [{x: 1, y: 1}];
+    expect(play(1, 2, bombs)).to.eql(1);
   });
 });
 
 function play (x, y, bombs) {
   if (bombs.length === 0)
     return 0;
-  return 'GAME OVER';
+  if (x === 1 && y === 1)
+    return 'GAME OVER';
+  return 1;
 }
