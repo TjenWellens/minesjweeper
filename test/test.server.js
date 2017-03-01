@@ -44,7 +44,7 @@ describe('game with bomb on {1,1}, {1,2}', function () {
 function play (coord, bombs) {
   if (bombs.length === 0)
     return 0;
-  for (var i in bombs) {
+  for (i in bombs) {
     if (bombs[i].x === coord.x && bombs[i].y === coord.y)
       return 'GAME OVER';
   }
